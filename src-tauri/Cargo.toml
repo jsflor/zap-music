@@ -1,0 +1,28 @@
+[package]
+name = "zap-music"
+version = "0.1.0"
+description = "High-performance cross-platform clone of macOS Music app"
+authors = ["Zap Music Contributors"]
+edition = "2021"
+
+[lib]
+name = "zap_music_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.0", features = [] }
+
+[dependencies]
+tauri = { version = "2.2", features = ["macos-private-api", "tray-icon"] }
+tauri-plugin-shell = "2.0"
+tauri-plugin-fs = "2.0"
+tauri-plugin-dialog = "2.0"
+tauri-plugin-http = "2.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+lofty = "0.21"
+rusqlite = { version = "0.33", features = ["bundled"] }
+rodio = { version = "0.20", default-features = false, features = ["symphonia-all"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls", "stream"] }
+tokio = { version = "1.43", features = ["full"] }
+base64 = "0.22"
